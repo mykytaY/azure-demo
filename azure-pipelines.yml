@@ -6,10 +6,6 @@
 trigger:
 - main
 
-variables:
-  uiSource: 'src'
-  uiBuild: '$(uiSource)/build'
-
 pool:
   vmImage: ubuntu-latest
 
@@ -28,7 +24,7 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(uiBuild)'
+    rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: false
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
